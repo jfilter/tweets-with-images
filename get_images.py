@@ -51,7 +51,7 @@ with open('temp.csv', newline='') as csvfile:
                         media_res = requests.get(url)
 
                         if not media_res.ok:
-                            raise Exception(media_res.status)
+                            raise Exception(media_res.status_code)
 
                         with open('media/' + fn, 'wb') as f:
                             f.write(media_res.content)
