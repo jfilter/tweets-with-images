@@ -6,6 +6,8 @@ First, I use [Twint](https://github.com/haccer/twint) to first get all the tweet
 
 Second, I check for links to meda files in the tweets. The image URLs are not linked directly so I have to scrape them off another site. All togehter it's very dirty way and it will break with the slightest UI changes, but it still may be helpful to you.
 
+## Usage
+
 1.  install [pipenv](https://github.com/pypa/pipenv#installation)
 2.  `git clone https://github.com/jfilter/tweets-with-images && cd tweets-with-images`
 3.  `pipenv install`
