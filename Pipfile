@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+twint = { version="==1.1.2.3" }
+requests = "*"
+lxml = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
