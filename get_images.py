@@ -7,10 +7,16 @@ from lxml import etree
 
 errors = []
 
+rows_with_images = []
+fieldnames = []
+
 with open('temp.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
-    for row in reader:
 
+    fieldnames = reader.fieldnames
+    print(fieldnames)
+
+    for row in reader:
         text = row['tweet']
 
         # filter out replies (but the more recent tweets don't have it, we have
@@ -55,6 +61,8 @@ with open('temp.csv', newline='') as csvfile:
 
                         with open('media/' + fn, 'wb') as f:
                             f.write(media_res.content)
+                        row.update({'filename': fn})
+                        rows_with_images.append(row)
                         tries = 0
                     except Exception as e:
                         print(str(e))
@@ -62,5 +70,10 @@ with open('temp.csv', newline='') as csvfile:
                         tries -= 1
 
                 print()
+
+with open('tweets_with_images.csv', 'w') as csvfile:
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames + ['filename'])
+    writer.writeheader()
+    writer.writerows(rows_with_images)
 
 print(errors)
