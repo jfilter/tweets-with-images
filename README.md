@@ -8,12 +8,17 @@ Second, I check for links to meda files in the tweets. The image URLs are not li
 
 ## Usage
 
-1.  install [pipenv](https://github.com/pypa/pipenv#installation)
-2.  `git clone https://github.com/jfilter/tweets-with-images && cd tweets-with-images`
-3.  `pipenv install`
-4.  Change user handle in [get_tweets.py](get_tweets.py#L5)
-5.  `pipenv run python get_tweets.py`
-6.  `pipenv run python get_images.py`
+`pip install git+https://github.com/jfilter/tweets-with-images#egg=tweets_with_images`
+
+```
+import tweets_with_images
+
+# only select tweets that are newer than the given tweet (id)
+# tweets_with_images.get_tweets('fil_ter', './data', 608045345201881088)
+
+tweets_with_images.get_tweets('fil_ter', './data')
+tweets_with_images.get_images('./data')
+```
 
 ## License
 
