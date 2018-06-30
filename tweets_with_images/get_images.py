@@ -8,7 +8,6 @@ from lxml import etree
 
 
 def get_images(path):
-
     pathlib.Path(path + '/media').mkdir(parents=True, exist_ok=True)
     errors = []
 
