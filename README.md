@@ -8,9 +8,11 @@ Second, I check for links to meda files in the tweets. The image URLs are not li
 
 ## Usage
 
-`pip install git+https://github.com/jfilter/tweets-with-images#egg=tweets_with_images`
-
+```console
+pip install git+https://github.com/jfilter/tweets-with-images#egg=tweets_with_images
 ```
+
+```python
 import tweets_with_images
 
 # only select tweets that are newer than the given tweet (id)
