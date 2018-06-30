@@ -15,11 +15,12 @@ pip install git+https://github.com/jfilter/tweets-with-images#egg=tweets_with_im
 ```python
 import tweets_with_images
 
-# only select tweets that are newer than the given tweet (id)
-# tweets_with_images.get_tweets('fil_ter', './data', 608045345201881088)
+tweets = tweets_with_images.by_user('fil_ter')
+print(tweets) # tweets with images
+# the images are inside the folder 'media'. The location can be specified with the second argument.
 
-tweets_with_images.get_tweets('fil_ter', './data')
-tweets_with_images.get_images('./data')
+# only select tweets that are newer than the given tweet (id)
+# tweets_with_images.by_user('fil_ter', './data', 608045345201881088)
 ```
 
 ## License
