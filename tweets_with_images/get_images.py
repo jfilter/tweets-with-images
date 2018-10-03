@@ -30,17 +30,22 @@ def get_images(tweets, media_path):
             try:
                 r = requests.get('https://' + found)
             except Exception as e:
-                print('failed: ' + found)
+                print('request failed: ' + found)
                 continue
 
-            res_text = r.text
-            parser = etree.HTMLParser()
-            tree = etree.parse(StringIO(res_text), parser)
+            try:
+                res_text = r.text
+                parser = etree.HTMLParser()
+                tree = etree.parse(StringIO(res_text), parser)
 
-            # get the images, we have to exclude profile images and emojis
-            # also only take 'root' tweets
-            imgs = tree.xpath(
-                '//*[contains(@class, "js-initial-focus") and not (@data-has-parent-tweet="true")]//img[not(contains(@class, "profile") or contains(@class, "Emoji"))]')
+                # get the images, we have to exclude profile images and emojis
+                # also only take 'root' tweets
+                imgs = tree.xpath(
+                    '//*[contains(@class, "js-initial-focus") and not (@data-has-parent-tweet="true")]//img[not(contains(@class, "profile") or contains(@class, "Emoji"))]')
+            except Exception as e:
+                print('parsing failed: ' + res_text)
+                continue
+
             for i in imgs:
                 # use the HQ / orginal version
                 url = i.get('src') + ':large'
